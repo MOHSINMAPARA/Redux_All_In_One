@@ -1,20 +1,20 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch ,useSelector} from 'react-redux'
 import { Data } from '../Redux/actions/action'
 import { Link } from 'react-router-dom'
 import { sendData } from './SendData'
 
 function A() {
 
-    const [users, setUsers] = useState([])
+    // const [users, setUsers] = useState([])
     const dispatch = useDispatch()
-
+    const users = useSelector(state => state.reducerXYZ.prod)
     useEffect(() => {
         sendData()
             .then((users) => {
                 console.log(users)
-                setUsers(users)
+                // setUsers(users)
                 dispatch(Data(users))
             })
             .catch((err) => { alert(err) })

@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { Data } from '../Redux/actions/action'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { sendData } from './SendData'
+import { Data } from '../Redux/actions/action'
 
 function B() {
-  const [users, setUsers] = useState(useSelector(state => state.reducerXYZ.prod))
+  const dispatch = useDispatch()
+  // const [users, setUsers] = useState(useSelector(state => state.reducerXYZ.prod))
+  const users = useSelector(state => state.reducerXYZ.prod)
 
   if (users.length === 0) {
-
     sendData()
       .then((users) => {
         console.log(users)
-        setUsers(users)
+        dispatch(Data(users))
       })
       .catch((err) => { alert(err) })
-
   }
 
   return (
