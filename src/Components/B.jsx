@@ -6,16 +6,31 @@ import { Data } from '../Redux/actions/action'
 function B() {
   const dispatch = useDispatch()
   // const [users, setUsers] = useState(useSelector(state => state.reducerXYZ.prod))
-  const users = useSelector(state => state.reducerXYZ.prod)
+  const users = useSelector(state => state.reducerXYZ. userState)
 
-  if (users.length === 0) {
+  // it is use for if datafetch is in A component
+
+  // if (users.length === 0) {
+  //   sendData()
+  //     .then((users) => {
+  //       console.log(users)
+  //       dispatch(Data(users))
+  //     })
+  //     .catch((err) => { alert(err) })
+  // }
+  
+  //End
+
+  useEffect(() => {
     sendData()
-      .then((users) => {
-        console.log(users)
-        dispatch(Data(users))
-      })
-      .catch((err) => { alert(err) })
-  }
+        .then((users) => {
+            console.log(users)
+            // setUsers(users)
+            dispatch(Data(users))
+        })
+        .catch((err) => { alert(err) })
+}, [])
+
 
   return (
     <div>

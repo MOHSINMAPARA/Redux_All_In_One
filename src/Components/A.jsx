@@ -9,7 +9,9 @@ function A() {
 
     // const [users, setUsers] = useState([])
     const dispatch = useDispatch()
-    const users = useSelector(state => state.reducerXYZ.prod)
+    const users = useSelector(state => state.reducerXYZ. userState)
+
+    
     useEffect(() => {
         sendData()
             .then((users) => {
